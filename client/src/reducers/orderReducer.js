@@ -1,29 +1,24 @@
-import { GET_CART, ADD_TO_CART, DELETE_FROM_CART, CART_LOADING } from "../src/actions/types";
+import { GET_ORDERS, CHECKOUT, ORDERS_LOADING } from "../actions/types";
 
 const initialState = {
-    cart: [],
+    orders: [],
     loading: false
 }
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case GET_CART:
+        case GET_ORDERS:
             return {
                 ...state,
-                cart: action.payload,
+                orders: action.payload,
                 loading: false
             }
-        case ADD_TO_CART:
+        case CHECKOUT:
             return {
                 ...state,
-                cart: [action.payload, ...state.cart]
+                orders: [action.payload, ...state.orders]
             }
-        case DELETE_FROM_CART:
-            return {
-                ...state,
-                cart: action.payload
-            }
-        case CART_LOADING:
+        case ORDERS_LOADING:
             return {
                 ...state,
                 loading: true
